@@ -5,7 +5,7 @@ const User = require("../models/user.model")
 const Token = require("../models/token.model")
 
 //REGISTER
-const register = asyncHandler(async (req, res) => {
+const register = asyncHandler(async (req: any, res: any) => {
 	const { username, email, password, role } = req.body
 
 	// Validation
@@ -49,7 +49,7 @@ const register = asyncHandler(async (req, res) => {
 
 // Login User
 
-const login = asyncHandler(async (req, res) => {
+const login = asyncHandler(async (req: any, res: any) => {
 	const { email, password } = req.body
 
 	// Validate Request
@@ -104,7 +104,7 @@ const login = asyncHandler(async (req, res) => {
 })
 
 //LOGOUT
-const logout = asyncHandler(async (req, res) => {
+const logout = asyncHandler(async (req: any, res: any) => {
 	res.cookie("token", "", {
 		path: "/",
 		httpOnly: true,

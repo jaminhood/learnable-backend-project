@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler")
 const jwt = require("jsonwebtoken")
 const User = require("../models/user.model")
 
-const isAdmin = asyncHandler(async (req, res, next) => {
+const isAdmin = asyncHandler(async (req: any, res: any, next: any) => {
 	try {
 		const token = req.cookies.token
 		if (!token) {

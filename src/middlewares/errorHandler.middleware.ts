@@ -1,6 +1,6 @@
 const { logEvents } = require("./logger.middleware")
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err: any, req: any, res: any, next: any) => {
 	logEvents(`${err.name}: ${err.message}\t${req.method}\t${req.url}\t${req.headers.origin}`, "errLog.log")
 	console.log(err.stack)
 

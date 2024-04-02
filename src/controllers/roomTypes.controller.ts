@@ -1,7 +1,7 @@
 const asyncHandler = require(`express-async-handler`)
 const RoomType = require(`../models/roomType.model`)
 
-const getAllRoomTypes = asyncHandler(async (req, res) => {
+const getAllRoomTypes = asyncHandler(async (req: any, res: any) => {
 	try {
 		const roomTypes = await RoomType.find()
 
@@ -15,7 +15,7 @@ const getAllRoomTypes = asyncHandler(async (req, res) => {
 	}
 })
 
-const storeRoomType = asyncHandler(async (req, res) => {
+const storeRoomType = asyncHandler(async (req: any, res: any) => {
 	try {
 		const _roomType = new RoomType(req.body)
 		const savedRoomType = await _roomType.save()

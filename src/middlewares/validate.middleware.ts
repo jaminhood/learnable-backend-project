@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler")
 const Joi = require("joi")
 
-const roomValidation = asyncHandler(async (req, res, next) => {
+const roomValidation = asyncHandler(async (req: any, res: any, next: any) => {
 	try {
 		const schema = Joi.object({
 			name: Joi.string().alphanum().min(4).required(),
@@ -19,7 +19,7 @@ const roomValidation = asyncHandler(async (req, res, next) => {
 	}
 })
 
-const roomTypeValidation = asyncHandler(async (req, res, next) => {
+const roomTypeValidation = asyncHandler(async (req: any, res: any, next: any) => {
 	try {
 		const schema = Joi.object({
 			name: Joi.string().alphanum().min(4).required(),
@@ -35,7 +35,7 @@ const roomTypeValidation = asyncHandler(async (req, res, next) => {
 	}
 })
 
-const registerValidation = asyncHandler(async (req, res, next) => {
+const registerValidation = asyncHandler(async (req: any, res: any, next: any) => {
 	try {
 		const schema = Joi.object({
 			username: Joi.string().alphanum().min(4).required(),
@@ -56,7 +56,7 @@ const registerValidation = asyncHandler(async (req, res, next) => {
 	}
 })
 
-const loginValidation = asyncHandler(async (req, res, next) => {
+const loginValidation = asyncHandler(async (req: any, res: any, next: any) => {
 	try {
 		const schema = Joi.object({
 			email: Joi.string()

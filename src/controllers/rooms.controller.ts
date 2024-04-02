@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler")
 const Room = require(`../models/room.model`)
 
-const getRoom = asyncHandler(async (req, res) => {
+const getRoom = asyncHandler(async (req: any, res: any) => {
 	try {
 		const room = await Room.findById(req.params.roomId)
 
@@ -15,29 +15,29 @@ const getRoom = asyncHandler(async (req, res) => {
 	}
 })
 
-const getRooms = asyncHandler(async (req, res) => {
+const getRooms = asyncHandler(async (req: any, res: any) => {
 	try {
-		let _rooms = []
+		let _rooms: any = []
 		const rooms = await Room.find()
 
 		if (Object.keys(req.query).length > 0) {
 			if (req.query.search) {
-				const search = rooms.filter(room => room.name.toLowerCase().includes(req.query.search.toLowerCase()))
+				const search = rooms.filter((room: any) => room.name.toLowerCase().includes(req.query.search.toLowerCase()))
 				_rooms = [..._rooms, ...search]
 			}
 
 			if (req.query.roomType) {
-				const roomType = rooms.filter(room => room.roomType.toLowerCase().includes(req.query.roomType.toLowerCase()))
+				const roomType = rooms.filter((room: any) => room.roomType.toLowerCase().includes(req.query.roomType.toLowerCase()))
 				_rooms = [..._rooms, ...roomType]
 			}
 
 			if (req.query.minPrice) {
-				const minPrice = rooms.filter(room => Number(room.price) >= Number(req.query.minPrice))
+				const minPrice = rooms.filter((room: any) => Number(room.price) >= Number(req.query.minPrice))
 				_rooms = [..._rooms, ...minPrice]
 			}
 
 			if (req.query.maxPrice) {
-				const maxPrice = rooms.filter(room => Number(room.price) <= Number(req.query.maxPrice))
+				const maxPrice = rooms.filter((room: any) => Number(room.price) <= Number(req.query.maxPrice))
 				_rooms = [..._rooms, ...maxPrice]
 			}
 		}
@@ -52,7 +52,7 @@ const getRooms = asyncHandler(async (req, res) => {
 	}
 })
 
-const storeRoom = asyncHandler(async (req, res) => {
+const storeRoom = asyncHandler(async (req: any, res: any) => {
 	try {
 		const _room = new Room(req.body)
 		const savedRoom = await _room.save()
@@ -67,7 +67,7 @@ const storeRoom = asyncHandler(async (req, res) => {
 	}
 })
 
-const editRoom = asyncHandler(async (req, res) => {
+const editRoom = asyncHandler(async (req: any, res: any) => {
 	try {
 		const _room = await Room.findByIdAndUpdate(req.params.roomId, { $set: req.body }, { new: true })
 
@@ -81,7 +81,7 @@ const editRoom = asyncHandler(async (req, res) => {
 	}
 })
 
-const deleteRoom = asyncHandler(async (req, res) => {
+const deleteRoom = asyncHandler(async (req: any, res: any) => {
 	const { roomId } = req.params
 
 	try {
