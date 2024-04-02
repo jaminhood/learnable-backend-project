@@ -29,8 +29,8 @@ app.use(mongoSanitize())
 // Routes
 app.use(`/`, express.static(path.join(__dirname, `public`)))
 
-app.use(`/`, require(`../routes/root.route`))
-app.use(`/api/v1`, require(`../routes/v1`))
+app.use(`/`, require(`./routes/root.route`))
+app.use(`/api/v1`, require(`./routes/v1`))
 
 app.all(`*`, (req: any, res: any) => {
 	res.status(404)
